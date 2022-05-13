@@ -1,0 +1,1 @@
+int totalPity = 0;
