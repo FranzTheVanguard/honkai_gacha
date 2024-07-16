@@ -58,8 +58,7 @@ class MyHomePage extends StatefulWidget {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  final AudioPlayer _audioPlayer = AudioPlayer();
-  AudioCache _audioCache = AudioCache();
+  final AudioPlayer player = AudioPlayer();
   final String _audioPath = "audio/gacha_sfx.mp3";
   String _defaultImgPath = 'assets/images/crystal.png';
   static const _bonus = 65;
@@ -167,11 +166,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _audioCache = AudioCache(fixedPlayer: _audioPlayer);
   }
 
   playSfx() async {
-    await _audioCache.play(_audioPath, mode: PlayerMode.LOW_LATENCY);
+    await player.play(AssetSource(_audioPath));
   }
   @override
   Widget build(BuildContext context) {
@@ -207,9 +205,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ConstrainedBox(
                 constraints: BoxConstraints(
                   minWidth: screenWidth,
-                  minHeight: screenHeight - 200,
+                  minHeight: screenHeight - 250,
                   maxWidth: screenWidth,
-                  maxHeight: screenHeight - 200,
+                  maxHeight: screenHeight - 250,
                 ),
                 child: InkWell(
                   child: Opacity(
@@ -264,7 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextButton(
                       child: Column(
                         children: [Row(
-                          children: [Text("1x Supply", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(1), letterSpacing: -0.5),)],
+                          children: [Text("1x Supply", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(1), letterSpacing: -0.5),)],
                           mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
                           crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                         ),
@@ -327,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextButton(
                       child: Column(
                         children: [Row(
-                          children: [Text("10x Supply", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(1), letterSpacing: -0.5),)],
+                          children: [Text("10x Supply", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(1), letterSpacing: -0.5),)],
                           mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
                           crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                         ),
